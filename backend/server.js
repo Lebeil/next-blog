@@ -15,7 +15,10 @@ const app = express();
 //db
 mongoose
     .connect(process.env.DATABASE_LOCAL, {useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false, useUnifiedTopology: true})
-    .then(()=> console.log('DB connected'));
+    .then(()=> console.log('DB connected'))
+    .catch(err=> {
+        console.log(err);
+})
 
 //middlewares
 app.use(morgan('dev'));
@@ -23,7 +26,6 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 //cors
 if(process.env.NODE_ENV === 'development') {
-    app.use(cors({origin: `${process.env.CLIENT_URL}`}));
     app.use(cors({origin: `${process.env.CLIENT_URL}`}));
 }
 
