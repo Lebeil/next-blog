@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser')
 const cors = require('cors')
 const mongoose = require('mongoose')
 require('dotenv').config();
-
+//link routes
 const blogRoutes = require('./routes/blog')
 
 //app
@@ -22,6 +22,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 //cors
 if(process.env.NODE_ENV === 'development') {
+    app.use(cors({origin: `${process.env.CLIENT_URL}`}));
     app.use(cors({origin: `${process.env.CLIENT_URL}`}));
 }
 
