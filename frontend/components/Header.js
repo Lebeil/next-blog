@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { APP_NAME } from '../config';
+import { signout, isAuth } from '../actions/auth';
+import Router from 'next/router';
 import {
     Collapse,
     Navbar,
@@ -14,6 +16,7 @@ import {
     DropdownMenu,
     DropdownItem
 } from 'reactstrap';
+
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -31,16 +34,28 @@ const Header = () => {
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="ml-auto" navbar>
-                        <NavItem>
-                            <Link href="/signin">
-                                <NavLink>Signin</NavLink>
-                            </Link>
-                        </NavItem>
-                        <NavItem>
-                            <Link href="/signup">
-                                <NavLink>Signup</NavLink>
-                            </Link>
-                        </NavItem>
+                        {!isAuth() && (
+                            <div style={{display: 'flex'}}>
+                                <NavItem>
+                                    <Link href="/signin">
+                                        <NavLink>Signin</NavLink>
+                                    </Link>
+                                </NavItem>
+                                <NavItem>
+                                    <Link href="/signup">
+                                        <NavLink>Signup</NavLink>
+                                    </Link>
+                                </NavItem>
+                            </div>
+                        )}
+
+
+                        {isAuth() && (
+                            <NavItem>
+                                    <NavLink onClick={()=> signout(()=> Router.replace(`/signin`))}>Se déconnecter</NavLink>
+                            </NavItem>
+                        )}
+
                     </Nav>
                 </Collapse>
             </Navbar>
