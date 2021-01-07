@@ -37,16 +37,28 @@ const Header = () => {
                         {!isAuth() && (
                             <div style={{display: 'flex'}}>
                                 <NavItem>
-                                    <Link href="/signin">
-                                        <NavLink>Signin</NavLink>
-                                    </Link>
+                                        <NavLink href="/signin">Signin</NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <Link href="/signup">
-                                        <NavLink>Signup</NavLink>
-                                    </Link>
+                                        <NavLink href="/signup">Signup</NavLink>
                                 </NavItem>
                             </div>
+                        )}
+
+                        {isAuth() && isAuth().role === 0 && (
+                            <NavItem>
+                                <NavLink href="/user">
+                                    {`Bienvenue ${isAuth().name}`}
+                                </NavLink>
+                            </NavItem>
+                        )}
+
+                        {isAuth() && isAuth().role === 1 && (
+                            <NavItem>
+                                <NavLink href="/admin">
+                                    {`Bienvenue ${isAuth().name}`}
+                                </NavLink>
+                            </NavItem>
                         )}
 
 
