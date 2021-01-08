@@ -15,7 +15,7 @@ const SigninComponent = () => {
     const { email, password, error, loading, message, showForm } = values;
 
     useEffect(() => {
-        isAuth() && Router.push(`/`);
+        isAuth() && Router.push('/');
     }, []);
 
     const handleSubmit = e => {
@@ -33,9 +33,9 @@ const SigninComponent = () => {
                 // authenticate user
                 authenticate(data, () => {
                     if(isAuth() && isAuth().role === 1){
-                        Router.push(`/admin`);
+                        Router.push('/admin');
                     } else {
-                        Router.push(`/user`)
+                        Router.push('/user')
                     }
                 });
             }

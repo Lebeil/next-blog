@@ -10,7 +10,9 @@ const Admin = ({ children }) => {
             Router.push(`/`);
         }
     }, []);
-    return <div>{children}</div>;
+    return (
+        <>{children}</>
+    )
 };
 
 export default Admin;

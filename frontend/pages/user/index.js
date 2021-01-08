@@ -7,7 +7,6 @@ const UserIndex = () => {
             <Private>
                 <h2>user page</h2>
             </Private>
-
         </Layout>
     );
 };

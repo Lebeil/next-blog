@@ -5,10 +5,12 @@ import { isAuth } from '../../actions/auth';
 const Private = ({ children }) => {
     useEffect(() => {
         if (!isAuth()) {
-            Router.push(`/signin`);
+            Router.push('/signin')
         }
     }, []);
-    return <div>{children}</div>;
+    return (
+        <>{children}</>
+    )
 };
 
 export default Private;

@@ -4,10 +4,7 @@ import Admin from "../../components/auth/admin";
 const AdminIndex = () => {
     return (
         <Layout>
-            <Admin>
-                <h2>Admin dashboard</h2>
-            </Admin>
-
+            <Admin><h2>Admin dashboard</h2></Admin>
         </Layout>
     );
 };

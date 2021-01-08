@@ -92,12 +92,12 @@ const SignupComponent = () => {
     };
 
     return (
-        <div>
+        <>
             {showError()}
             {showLoading()}
             {showMessage()}
             {showForm && signupForm()}
-        </div>
+        </>
     );
 };
 
